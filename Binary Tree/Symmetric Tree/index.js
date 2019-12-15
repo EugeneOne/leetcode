@@ -8,6 +8,17 @@
 /**
  * @param {TreeNode} root
  * @return {boolean}
- * [1,2,2,3,4,4,3]
+ *
  */
-var isSymmetric = function(root) {};
+// 递归
+var isSymmetric = function(root) {
+  if (!root) return true;
+  if (root.left === null && root.right === null) return true;
+  if (root.left === null || root.right === null) return false;
+  return isMirror(root.left, root.right);
+};
+var isMirror = function(l, r) {
+  if (l === null && r === null) return true;
+  if (l === null || r === null) return false;
+  return l.val === r.val && isMirror(l.left, r.right) && isMirror(l.right, r.left);
+};
