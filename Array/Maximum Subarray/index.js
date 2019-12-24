@@ -9,15 +9,14 @@ var maxSubArray = function(nums) {
   let num = 0;
   const LEN = nums.length;
   while (num !== LEN) {
-    for (let i = 0; i < LEN; i++) {
-      console.log('1');
+    for (let i = 0; i < LEN - num; i++) {
       let index = num;
       let result = 0;
       max = nums[i];
-      // while (index && nums[index]) {
-      //   result += nums[i + index];
-      //   index--;
-      // }
+      while (index) {
+        result += nums[i + index];
+        index--;
+      }
       if (max < result) {
         max = nums[i];
       }
