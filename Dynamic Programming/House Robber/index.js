@@ -6,15 +6,20 @@
 // dp2 = max(A1, A2)
 // dp3 = max(A1+A3, A2)
 // dpN = max(dp(N-2)+AN, dp(N-1))
-// var rob = function(nums) {
-//   let max = nums[0];
-//   if (nums.length < 3) {
-//     max = Math.max.apply(null, nums);
-//   }
+// 动态规划
+var rob = function(nums) {
+  const LEN = nums.length;
+  const DP = [];
+  DP[0] = 0;
+  DP[1] = nums[0];
+  for (let i = 2; i <= LEN; i++) {
+    if (DP[i - 2] + nums[i - 1] >= DP[i - 1]) {
+      DP[i] = DP[i - 2] + nums[i - 1];
+    } else {
+      DP[i] = DP[i - 1];
+    }
+  }
+  return DP[LEN];
+};
 
-//   for (let i in nums) {
-//     max = Math.max.apply(nums[i - 2] + nums[i], nums[i - 1])
-//   }
-// };
-
-// rob([1, 2, 53, 23]);
+console.log(rob([]));
