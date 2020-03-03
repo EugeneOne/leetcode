@@ -7,11 +7,12 @@
  */
 /**
  * @param {TreeNode} root
- * @return {boolean}
+ * @return {number}
  */
-var isBalanced = function(root) {
-    if(!root || !root.val) return true;
+var maxDepth = function(root) {
     let depthArr = [];
+    let depth = 1;
+    if(!root) return 0;
     const getDepth = (root, depth = 1) => {
         if(!root || (!root.left && !root.right)) {
             depthArr.push(depth);
@@ -25,6 +26,5 @@ var isBalanced = function(root) {
         }
     }
     getDepth(root, 1);
-    console.log('depthArr:', depthArr);
-    return Math.max(...depthArr) - Math.min(...depthArr) <= 1 ? true : false;
+    return Math.max(...depthArr);
 };
