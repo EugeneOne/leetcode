@@ -54,6 +54,7 @@ var letterCombinations = function(digits) {
                 }
                 res[i] += w[0];
             }
+            console.log(tmp);
             res.push(...tmp)
         } else {
             res.push(...w);
@@ -63,4 +64,4 @@ var letterCombinations = function(digits) {
 
 };
 
-console.log(letterCombinations('234'));
+letterCombinations('234')
